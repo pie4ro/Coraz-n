@@ -152,7 +152,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, #7943dd 0%, #0f051d 100%);
+    background: radial-gradient(circle at center, #9069d8 0%, #0f051d 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -314,7 +314,7 @@
 <body>
 
 <canvas id="universe"></canvas>
-<audio id="musica/bigbang-audio-1" preload="auto"><source src="musica/bigbang-audio-1.mp3" type="audio/mpeg"></audio>
+<audio id="bg-music" preload="auto"><source src="musica/bigbang-audio-1.mp3" type="audio/mpeg"></audio>
 <div id="flash"></div>
 
 <div id="ui">
@@ -618,7 +618,7 @@ const btnCapture = document.getElementById('btn-capture');
 const btnDownload = document.getElementById('btn-download');
 const btnRetake = document.getElementById('btn-retake');
 const btnCloseCamera = document.getElementById('btn-close-camera');
-const bgMusic = document.getElementById('musica/bigbang-audio-1');
+const bgMusic = document.getElementById('bg-music');
 let used = false;
 let mediaStream = null;
 
@@ -702,7 +702,7 @@ btnCapture.addEventListener('click', () => {
   ctxCollage.textAlign = 'center';
   ctxCollage.fillText('✨ Melanie Martinez & Nuestro Universo ✨', 500, 50);
 
-  // Las 4 fotos de Melanie Martinez
+  // Las 4 fotos de Melanie Martinez corregidas directamente en la raíz
   const collageImageSources = [
     'fotos/melanie1.jpg', 
     'fotos/melanie2.jpg', 
@@ -713,7 +713,7 @@ btnCapture.addEventListener('click', () => {
   let loadedImages = 0;
   const imgObjects = [];
 
-  // Posiciones y tamaños más grandes (300px x 300px) para las 4 esquinas
+  // Posiciones y tamaños grandes (300px x 300px) para las 4 esquinas
   const positions = [
     { x: 40,  y: 80,  w: 300, h: 300, rot: -0.06 }, // Esquina superior izquierda
     { x: 660, y: 80,  w: 300, h: 300, rot: 0.06 },  // Esquina superior derecha
@@ -772,7 +772,7 @@ function drawCollageFinal(ctxC, imgObjs, positions) {
   ctxC.fillStyle = '#444444';
   ctxC.font = '16px "Segoe UI", Arial';
   ctxC.textAlign = 'center';
-  ctxC.fillText('❤️v❤️', 0, 130);
+  ctxC.fillText('❤️ Lizeth Alessandra & Universo ❤️', 0, 130);
   ctxC.restore();
 
   if (mediaStream) {
