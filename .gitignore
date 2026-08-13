@@ -1,0 +1,7 @@
+# Ignorar la carpeta de fotos privadas
+fotos/
+musica/
+
+# O si tienes fotos sueltas con extensión jpeg
+*.jpeg
+*.jpg
