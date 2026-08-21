@@ -1,0 +1,305 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #000;
+  height: 100%;
+  width: 100%;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+#universe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: radial-gradient(ellipse at center, #0f051d 0%, #000000 100%);
+  transition: opacity 1s ease;
+}
+
+#ui {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+h1 {
+  color: #fff;
+  text-shadow: 0 0 20px #a78bfa, 0 0 40px #7c3aed, 0 0 60px #4c1d95;
+  font-size: 3vw;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  text-align: center;
+  transition: opacity 1s ease;
+}
+
+button {
+  pointer-events: all;
+  background: linear-gradient(135deg, #7c3aed, #db2777, #f472b6);
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+  border: none;
+  color: white;
+  font-size: 1.3vw;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 18px 45px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(219, 39, 119, 0.7), 0 0 60px rgba(124, 58, 237, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 1s ease;
+  text-transform: uppercase;
+}
+
+button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 35px rgba(219, 39, 119, 0.9), 0 0 80px rgba(124, 58, 237, 0.7);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.fade-out {
+  opacity: 0 !important;
+}
+
+.heart {
+  position: fixed;
+  pointer-events: none;
+  font-size: 24px;
+  z-index: 20;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+#flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 30;
+}
+
+@media (max-width: 700px) {
+  h1 { font-size: 6vw; }
+  button { font-size: 4vw; padding: 15px 30px; }
+}
+
+.hint {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(243, 232, 255, 0.95);
+  text-shadow: 0 0 12px rgba(167, 139, 250, 0.9);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 15;
+  text-align: center;
+}
+
+.floating-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 50;
+  display: flex;
+  gap: 15px;
+}
+
+.btn-action {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+  font-size: 1vw;
+  padding: 12px 25px;
+}
+
+#purple-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #9069d8 0%, #0f051d 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+  padding: 40px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#purple-screen.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.love-message {
+  color: #f3e8ff;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  line-height: 1.6;
+  max-width: 800px;
+  text-shadow: 0 0 20px rgba(167, 139, 250, 0.6);
+  font-weight: 400;
+}
+
+.purple-back-btn {
+  margin-top: 30px;
+  font-size: 1vw;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#camera-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 3, 20, 0.95);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  overflow: hidden;
+}
+
+#camera-modal.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.bg-floating-photo {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,0.3);
+  box-shadow: 0 0 20px rgba(219,39,119,0.5);
+  opacity: 0.25;
+  animation: floatRandom 10s infinite alternate ease-in-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes floatRandom {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-40px) rotate(10deg); }
+}
+
+.camera-container {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(20, 10, 35, 0.85);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(167, 139, 250, 0.4);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+}
+
+video, canvas.snapshot-canvas {
+  width: min(450px, 85vw);
+  height: min(340px, 50vh);
+  object-fit: cover;
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.camera-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.photo-card {
+  position: fixed;
+  background: #fdfdfd;
+  padding: 10px 10px 30px 10px;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 60px rgba(219,39,119,0.35);
+  z-index: 40;
+  cursor: grab;
+  transform: translate(-50%, -50%) scale(0) rotate(0deg);
+  transition: transform 0.6s cubic-bezier(.2,1.4,.4,1), opacity 0.6s ease;
+  opacity: 0;
+  width: min(220px, 60vw);
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.photo-card img {
+  display: block;
+  width: 100%;
+  height: min(260px, 42vh);
+  object-fit: cover;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.photo-card .caption {
+  text-align: center;
+  color: #444;
+  font-size: 13px;
+  margin-top: 8px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.photo-card.show {
+  opacity: 1;
+}
+
+.photo-close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #db2777;
+  color: white;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(219,39,119,0.7);
+  z-index: 41;
+}
